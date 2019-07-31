@@ -10,8 +10,6 @@ import (
 )
 
 var (
-	index int = -1
-
 	url string
 
 	isaretler = []string{
