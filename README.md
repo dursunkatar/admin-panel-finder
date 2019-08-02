@@ -1,9 +1,9 @@
-# admin-panel-bulucu
-Golang çalışmam
+# Admin Panel Finder
 
-![adminpanelbulucu](https://github.com/dursunkatar/admin-panel-bulucu/blob/master/panelbul.jpg)
+![admin panel finder](https://github.com/dursunkatar/admin-panel-finder/blob/master/screen.jpg)
 
-Kullanımı:
 
-go run panelibul.go https://site.com paneller.txt
+Usage:
+
+go run adminpanelfinder.go https://target.com admins.txt
 
