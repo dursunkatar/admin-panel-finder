@@ -17,11 +17,14 @@ var (
 	panelPaths []string
 
 	marks = []string{
+	        " type=\"password\" ",
 		" name=\"pwd\" ",
 		" name=\"pass\" ",
 		" name=\"password\" ",
+		" name=\"username\" ",
 		" value=\"Giriş Yap\" ",
 		" value=\"Login\" ",
+		" action=\"/login.php\" ",
 	}
 )
 
