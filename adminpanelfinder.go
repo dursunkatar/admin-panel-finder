@@ -154,7 +154,7 @@ func loadPanels(path string) error {
 	scanner := bufio.NewScanner(file)
 	scanner.Split(bufio.ScanLines)
 	for scanner.Scan() {
-		panelUrl := strings.Trim(scanner.Text(), " /")
+		panelUrl := strings.Trim(scanner.Text(), " /\r")
 		if !panelPathContains(panelUrl) {
 			panelPaths = append(panelPaths, panelUrl)
 		}
