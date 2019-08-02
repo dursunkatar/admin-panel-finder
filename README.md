@@ -1,5 +1,5 @@
-# Fast Admin Panel Finder
-golang fast admin panel finder tools
+# Admin Panel Finder
+fast admin panel finder tools
 
 ![fast admin panel finder](https://github.com/dursunkatar/admin-panel-finder/blob/master/screen.jpg)
 
