@@ -25,6 +25,7 @@ var (
 		" value=\"Giriş Yap\" ",
 		" value=\"Login\" ",
 		" action=\"/login.php\" ",
+		" action=\"/login\" ",
 	}
 )
 
