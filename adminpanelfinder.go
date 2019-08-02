@@ -54,7 +54,7 @@ func main() {
 		return
 	}
 
-	goCount := 5
+	goCount := 10
 	chFound := make(chan string, 2)
 	chThisIsNot := make(chan bool, goCount)
 	chFinished := make(chan bool, 1)
