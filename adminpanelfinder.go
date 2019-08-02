@@ -17,7 +17,7 @@ var (
 	panelPaths []string
 
 	marks = []string{
-	        " type=\"password\" ",
+		" type=\"password\" ",
 		" name=\"pwd\" ",
 		" name=\"pass\" ",
 		" name=\"password\" ",
@@ -59,6 +59,8 @@ func main() {
 	chThisIsNot := make(chan bool, goCount)
 	chFinished := make(chan bool, 1)
 
+	fmt.Println("")
+	fmt.Println("Panel Url Count: ", len(panelPaths))
 	fmt.Println("")
 	fmt.Println("Started...")
 
@@ -152,8 +154,21 @@ func loadPanels(path string) error {
 	scanner := bufio.NewScanner(file)
 	scanner.Split(bufio.ScanLines)
 	for scanner.Scan() {
-		panelPaths = append(panelPaths, strings.Trim(scanner.Text(), " /"))
+		panelUrl := strings.Trim(scanner.Text(), " /")
+		if !panelPathContains(panelUrl) {
+			panelPaths = append(panelPaths, panelUrl)
+		}
 	}
+
 	file.Close()
 	return nil
+}
+
+func panelPathContains(s string) bool {
+	for _, path := range panelPaths {
+		if s == path {
+			return true
+		}
+	}
+	return false
 }
