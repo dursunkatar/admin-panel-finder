@@ -74,7 +74,7 @@ namespace AdminFinder
                         var result = client.DownloadString(_url + panel);
                         if (result.Contains(" type=\"password\" "))
                         {
-                            index = panels.Length;
+                      
                             Console.WriteLine("\n Panel found: " + panel);
                             Console.WriteLine("\n Finish");
                             Environment.Exit(0);
