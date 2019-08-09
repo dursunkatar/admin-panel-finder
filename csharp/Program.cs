@@ -71,7 +71,7 @@ namespace AdminFinder
                     client.Encoding = Encoding.UTF8;
                     try
                     {
-                        var result = client.DownloadString(_url + panel.Trim(' ', '/'));
+                        var result = client.DownloadString(_url + panel);
                         if (result.Contains(" type=\"password\" "))
                         {
                             index = panels.Length;
