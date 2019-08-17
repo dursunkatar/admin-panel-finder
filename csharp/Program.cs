@@ -13,7 +13,7 @@ namespace AdminFinder
     class Program
     {
         static volatile object obj = new object();
-        static string[] panels;
+        static readonly List<string> panels = new List<string>();
         static int threadRunningCount;
         static string url;
         static int index = -1;
@@ -21,14 +21,15 @@ namespace AdminFinder
         static void Main(string[] args)
         {
             Console.WriteLine();
-            Console.WriteLine(
-   @"    ##################################### 
-    #        Admin Panel Finder         #
-    #-----------------------------------#
-    #       Author: Dursun Katar        #
-    #-----------------------------------#
-    #       github.com/dursunkatar      #
-    #####################################");
+            Console.WriteLine(" #####################################");
+            Console.WriteLine(" #                                   #");
+            Console.WriteLine(" #        Admin Panel Finder         #");
+            Console.WriteLine(" #                                   #");
+            Console.WriteLine(" #-----------------------------------#");
+            Console.WriteLine(" #                                   #");
+            Console.WriteLine(" #       github.com/dursunkatar      #");
+            Console.WriteLine(" #                                   #");
+            Console.WriteLine(" #####################################");
 
             url = args[0];
 
@@ -39,9 +40,10 @@ namespace AdminFinder
                 return;
             }
 
-            if (!File.Exists(args[1]))
+            string err = loadPanels(args[1]);
+            if (err != null)
             {
-                Console.WriteLine("\n File not exists!\n");
+                Console.WriteLine(err);
                 return;
             }
 
@@ -50,9 +52,7 @@ namespace AdminFinder
                 url = url + "/";
             }
 
-            loadPanels(args[1]);
-
-            Console.WriteLine("\n Panel Url Count: " + panels.Length);
+            Console.WriteLine("\n Panel Url Count: " + panels.Count);
             Console.WriteLine("\n Started...");
             int threadCount = threadRunningCount = 10;
             for (int i = 0; i < threadCount; i++)
@@ -74,7 +74,6 @@ namespace AdminFinder
                         var result = client.DownloadString(_url + panel);
                         if (result.Contains(" type=\"password\" "))
                         {
-                      
                             Console.WriteLine("\n Panel found: " + panel);
                             Console.WriteLine("\n Finish");
                             Environment.Exit(0);
@@ -93,7 +92,7 @@ namespace AdminFinder
             {
                 index++;
                 threadRunningCount--;
-                if (index < panels.Length)
+                if (index < panels.Count)
                 {
                     threadRunningCount++;
                     connect(url, panels[index]);
@@ -105,19 +104,23 @@ namespace AdminFinder
             }
         }
 
-        static void loadPanels(string path)
+        static string loadPanels(string path)
         {
+            if (!File.Exists(path))
+            {
+                return "\n " + path + " not exists!\n";
+            }
             string[] lines = File.ReadAllLines(path, Encoding.Default);
-            var list = new List<string>();
+
             foreach (var line in lines)
             {
                 string _line = line.Trim(' ', '/');
-                if (!list.Contains(_line))
+                if (!panels.Contains(_line))
                 {
-                    list.Add(_line);
+                    panels.Add(_line);
                 }
             }
-            panels = list.ToArray();
+            return null;
         }
     }
 }
