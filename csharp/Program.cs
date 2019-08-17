@@ -22,13 +22,9 @@ namespace AdminFinder
         {
             Console.WriteLine();
             Console.WriteLine(" #####################################");
-            Console.WriteLine(" #                                   #");
             Console.WriteLine(" #        Admin Panel Finder         #");
-            Console.WriteLine(" #                                   #");
             Console.WriteLine(" #-----------------------------------#");
-            Console.WriteLine(" #                                   #");
             Console.WriteLine(" #       github.com/dursunkatar      #");
-            Console.WriteLine(" #                                   #");
             Console.WriteLine(" #####################################");
 
             url = args[0];
