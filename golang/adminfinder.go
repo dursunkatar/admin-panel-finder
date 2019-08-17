@@ -74,10 +74,7 @@ exitLOOP:
 			break exitLOOP
 		}
 	}
-
-	close(chFound)
-	close(chThisIsNot)
-	close(chFinished)
+	
 	fmt.Println("Finish")
 }
 
