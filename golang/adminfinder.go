@@ -18,14 +18,7 @@ var (
 
 	marks = []string{
 		" type=\"password\" ",
-		" name=\"pwd\" ",
-		" name=\"pass\" ",
-		" name=\"password\" ",
 		" name=\"username\" ",
-		" value=\"Giriş Yap\" ",
-		" value=\"Login\" ",
-		" action=\"/login.php\" ",
-		" action=\"/login\" ",
 	}
 )
 
@@ -34,8 +27,6 @@ func main() {
 	print.HiRed(`
 	##################################### 
 	#        Admin Panel Finder         #
-	#-----------------------------------#
-	#       Author: Dursun Katar        #
 	#-----------------------------------#
 	#       github.com/dursunkatar      #
 	#####################################`)
@@ -56,7 +47,7 @@ func main() {
 
 	goCount := 10
 	chFound := make(chan string, 2)
-	chThisIsNot := make(chan bool, goCount)
+	chThisIsNot := make(chan bool, 1)
 	chFinished := make(chan bool, 1)
 
 	fmt.Println("")
@@ -116,10 +107,6 @@ func connectUrl() (bool, string, string) {
 		return false, "", ""
 	}
 	req.Header.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0")
-	req.Header.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
-	req.Header.Add("Content-Type", "text/html; charset=utf-8")
-	req.Header.Add("Accept-Language", "tr-TR,tr;q=0.8,en-US;q=0.5,en;q=0.3")
-	req.Header.Add("Connection", "keep-alive")
 
 	res, err := http.DefaultClient.Do(req)
 
